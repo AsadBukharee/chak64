@@ -57,5 +57,5 @@ coverage.xml
 *.pot
 
 # Django stuff:
-staticfiles/
+
 Required REST APIs for Your Application.md
