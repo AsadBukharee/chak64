@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "chak64/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "."
+  }
 }
