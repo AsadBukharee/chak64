@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chak64 - Welcome</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .api-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .api-link:hover {
+            background-color: #2980b9;
+        }
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Chak64</h1>
+        
+        <div class="urdu-text">
+            السلام علیکم ورحمۃ اللہ وبرکاتہ
+        </div>
+        
+        <p>Your server is running successfully!</p>
+        <p>This is the API server for Chak64, a platform for community engagement and problem-solving.</p>
+        
+        <div class="status">Server Status: Online</div>
+        
+        <a href="/api/" class="api-link">Access API Documentation</a>
+    </div>
+</body>
+</html> 

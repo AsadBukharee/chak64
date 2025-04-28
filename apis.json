@@ -1,0 +1,875 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Chak64 API",
+		"description": "API collection for the Chak64 community platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"description": "Authentication endpoints for the API",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"your_username\",\n    \"password\": \"your_password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						},
+						"description": "Login and get JWT tokens"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"your_refresh_token\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/refresh/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh",
+								""
+							]
+						},
+						"description": "Refresh JWT token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"description": "User management endpoints",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"newuser\",\n    \"email\": \"user@example.com\",\n    \"password\": \"securepassword\",\n    \"phone\": \"1234567890\",\n    \"cnic\": \"12345-1234567-1\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/register/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register",
+								""
+							]
+						},
+						"description": "Register a new user (no authentication required)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								""
+							]
+						},
+						"description": "Get user details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Updated\",\n    \"last_name\": \"User\",\n    \"email\": \"updated@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								""
+							]
+						},
+						"description": "Update user information"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify User by CNIC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/verify/?cnic=12345-1234567-1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"verify",
+								""
+							],
+							"query": [
+								{
+									"key": "cnic",
+									"value": "12345-1234567-1"
+								}
+							]
+						},
+						"description": "Verify a resident by CNIC"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"description": "Post management endpoints",
+			"item": [
+				{
+					"name": "List All Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/posts/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						},
+						"description": "List all posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recent Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/posts/recent/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"recent",
+								""
+							]
+						},
+						"description": "List recent posts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/posts/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								""
+							]
+						},
+						"description": "Get post details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Post Title\",\n    \"content\": \"This is the content of the new post.\",\n    \"image_url\": \"https://example.com/image.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/posts/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						},
+						"description": "Create a new post (authenticated)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Post Title\",\n    \"content\": \"This is the updated content of the post.\",\n    \"image_url\": \"https://example.com/updated-image.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/posts/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								""
+							]
+						},
+						"description": "Update a post (authenticated)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/posts/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1",
+								""
+							]
+						},
+						"description": "Delete a post (authenticated)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts by Date Range",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/posts/date-range/?start_date=2023-01-01&end_date=2023-12-31",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"date-range",
+								""
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-12-31"
+								}
+							]
+						},
+						"description": "List posts within a date range"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Problems",
+			"description": "Problem management endpoints",
+			"item": [
+				{
+					"name": "List All Problems",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/problems/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"problems",
+								""
+							]
+						},
+						"description": "List all problems"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Problem Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/problems/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"problems",
+								"1",
+								""
+							]
+						},
+						"description": "Get problem details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Problem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Problem Title\",\n    \"description\": \"This is the description of the new problem.\",\n    \"image_url\": \"https://example.com/problem-image.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/problems/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"problems",
+								""
+							]
+						},
+						"description": "Create a new problem"
+					},
+					"response": []
+				},
+				{
+					"name": "Vote for Problem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/problems/1/vote/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"problems",
+								"1",
+								"vote",
+								""
+							]
+						},
+						"description": "Vote for a problem"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Comment to Problem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"This is a comment on the problem.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/problems/1/comments/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"problems",
+								"1",
+								"comments",
+								""
+							]
+						},
+						"description": "Add a comment to a problem"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Campaigns",
+			"description": "Campaign management endpoints",
+			"item": [
+				{
+					"name": "List All Campaigns",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/campaigns/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								""
+							]
+						},
+						"description": "List all campaigns"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Campaign Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/campaigns/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"1",
+								""
+							]
+						},
+						"description": "Get campaign details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Campaign",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Campaign Title\",\n    \"description\": \"This is the description of the new campaign.\",\n    \"target_amount\": 10000.00,\n    \"start_date\": \"2023-01-01T00:00:00Z\",\n    \"end_date\": \"2023-12-31T23:59:59Z\",\n    \"image_url\": \"https://example.com/campaign-image.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/campaigns/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								""
+							]
+						},
+						"description": "Create a new campaign (admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Campaign",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Campaign Title\",\n    \"description\": \"This is the updated description of the campaign.\",\n    \"target_amount\": 15000.00,\n    \"start_date\": \"2023-01-01T00:00:00Z\",\n    \"end_date\": \"2023-12-31T23:59:59Z\",\n    \"image_url\": \"https://example.com/updated-campaign-image.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/campaigns/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"1",
+								""
+							]
+						},
+						"description": "Update campaign details (admin only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Campaign Donors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/campaigns/1/donors/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"1",
+								"donors",
+								""
+							]
+						},
+						"description": "List donors for a campaign"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Donations",
+			"description": "Donation management endpoints",
+			"item": [
+				{
+					"name": "Create Donation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"campaign\": 1,\n    \"amount\": 100.00,\n    \"transaction_id\": \"txn_123456789\",\n    \"purpose\": \"Supporting the campaign\",\n    \"privacy_option\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/donations/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								""
+							]
+						},
+						"description": "Record a new donation"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Campaign Donations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/donations/campaigns/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"campaigns",
+								"1",
+								""
+							]
+						},
+						"description": "List donations for a specific campaign"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Donations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/donations/user/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"user",
+								"1",
+								""
+							]
+						},
+						"description": "List donations by a specific user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sponsors",
+			"description": "Sponsor management endpoints",
+			"item": [
+				{
+					"name": "Create Sponsor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"phone\": \"1234567890\",\n    \"fund_type\": \"monthly\",\n    \"amount\": 500.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sponsors/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sponsors",
+								""
+							]
+						},
+						"description": "Record a new sponsorship"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fund Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/sponsors/fund-types/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sponsors",
+								"fund-types",
+								""
+							]
+						},
+						"description": "Get available fund types"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sponsorship Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/sponsors/reports/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sponsors",
+								"reports",
+								""
+							]
+						},
+						"description": "Get sponsorship reports (admin only)"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "your_access_token_here",
+			"type": "string"
+		}
+	]
+} 
